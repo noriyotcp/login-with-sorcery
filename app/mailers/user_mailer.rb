@@ -5,9 +5,10 @@ class UserMailer < ApplicationMailer
   #
   #   en.user_mailer.activation_needed_email.subject
   #
-  def activation_needed_email
+  def activation_needed_email(user)
     @user = user
-    @url  = "http://0.0.0.0:3000/users/#{user.activation_token}/activate"
+    # Instead of 0.0.0.0:3000, use my Cloud9's url
+    @url  = "https://login-with-sorcery-noriyotcp.c9users.io/users/#{user.activation_token}/activate"
     mail(:to => user.email,
          :subject => "Welcome to My Awesome Site")
   end
@@ -17,9 +18,10 @@ class UserMailer < ApplicationMailer
   #
   #   en.user_mailer.activation_success_email.subject
   #
-  def activation_success_email
+  def activation_success_email(user)
     @user = user
-    @url  = "http://0.0.0.0:3000/login"
+    # Instead of 0.0.0.0:3000, use my Cloud9's url
+    @url  = "https://login-with-sorcery-noriyotcp.c9users.io/login"
     mail(:to => user.email,
          :subject => "Your account is now activated")
   end
