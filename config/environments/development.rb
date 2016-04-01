@@ -40,11 +40,22 @@ Rails.application.configure do
   # config.action_view.raise_on_missing_translations = true
 
   # config.action_mailer.delivery_method = :letter_opener
+  # config.action_mailer.delivery_method = :smtp
+  # config.action_mailer.smtp_settings = {
+  #       address: ENV['SMTP_ADDRESS'],
+  #       port: ENV['SMTP_PORT'],
+  #       user_name: ENV['SMTP_USER_NAME'],
+  #       password: ENV['SMTP_PASSWORD']
+  # }
+
+  # Mailtrap settings
   config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {
-        address: ENV['SMTP_ADDRESS'],
-        port: ENV['SMTP_PORT'],
-        user_name: ENV['SMTP_USER_NAME'],
-        password: ENV['SMTP_PASSWORD']
-  }
+    config.action_mailer.smtp_settings = {
+      :user_name => ENV['MAILTRAP_USERNAME'],
+      :password => ENV['MAILTRAP_PASSWORD'],
+      :address => ENV['MAILTRAP_ADDRESS'],
+      :domain => ENV['MAILTRAP_DOMAIN'],
+      :port => ENV['MAILTRAP_PORT'],
+      :authentication => :cram_md5
+    }
 end
