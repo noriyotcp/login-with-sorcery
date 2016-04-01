@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160330043124) do
+ActiveRecord::Schema.define(version: 20160401013541) do
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                        null: false
@@ -22,8 +22,12 @@ ActiveRecord::Schema.define(version: 20160330043124) do
     t.datetime "updated_at"
     t.string   "remember_me_token"
     t.datetime "remember_me_token_expires_at"
+    t.string   "activation_state"
+    t.string   "activation_token"
+    t.datetime "activation_token_expires_at"
   end
 
+  add_index "users", ["activation_token"], name: "index_users_on_activation_token"
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["remember_me_token"], name: "index_users_on_remember_me_token"
   add_index "users", ["username"], name: "index_users_on_username", unique: true
