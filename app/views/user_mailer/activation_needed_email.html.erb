@@ -1,5 +1,9 @@
-<h1>UserMailer#activation_needed_email</h1>
+Welcome to example.com, <%= @user.email %>
+===============================================
 
-<p>
-  <%= @greeting %>, find me in app/views/user_mailer/activation_needed_email.html.erb
-</p>
+You have successfully signed up to example.com,
+your username is: <%= @user.email %>.
+
+To login to the site, just follow this link: <%= link_to @url, @url %>.
+
+Thanks for joining and have a great day!
